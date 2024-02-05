@@ -1,0 +1,122 @@
+{
+    "os": "Linux-5.15.0-92-generic-x86_64-with-glibc2.17",
+    "python": "3.8.18",
+    "heartbeatAt": "2024-02-01T06:08:33.770895",
+    "startedAt": "2024-02-01T06:08:33.611012",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "ppo.py",
+    "codePathLocal": "ppo.py",
+    "codePath": "ppo.py",
+    "host": "chae-Z390-UD",
+    "username": "chae",
+    "executable": "/home/chae/anaconda3/envs/python38/bin/python",
+    "cpu_count": 8,
+    "cpu_count_logical": 16,
+    "cpu_freq": {
+        "current": 3425.00075,
+        "min": 800.0,
+        "max": 5000.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 800.002,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 255.14036560058594,
+            "used": 41.070838928222656
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 3090",
+            "memory_total": 25769803776
+        }
+    ],
+    "memory": {
+        "total": 31.27141571044922
+    }
+}

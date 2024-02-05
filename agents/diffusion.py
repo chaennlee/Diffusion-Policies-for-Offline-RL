@@ -17,14 +17,12 @@ from utils.utils import Progress, Silent
 
 
 class Diffusion(nn.Module):
-    def __init__(self, state_dim, action_dim, model, max_action,
-                 beta_schedule='linear', n_timesteps=100,
+    def __init__(self, state_dim, action_dim, model, beta_schedule='linear', n_timesteps=100,
                  loss_type='l2', clip_denoised=True, predict_epsilon=True):
         super(Diffusion, self).__init__()
 
         self.state_dim = state_dim
         self.action_dim = action_dim
-        self.max_action = max_action
         self.model = model
 
         if beta_schedule == 'linear':
@@ -96,7 +94,7 @@ class Diffusion(nn.Module):
         x_recon = self.predict_start_from_noise(x, t=t, noise=self.model(x, t, s))
 
         if self.clip_denoised:
-            x_recon.clamp_(-self.max_action, self.max_action)
+            x_recon.clamp_(0,1)
         else:
             assert RuntimeError()
 
@@ -142,7 +140,7 @@ class Diffusion(nn.Module):
         batch_size = state.shape[0]
         shape = (batch_size, self.action_dim)
         action = self.p_sample_loop(state, shape, *args, **kwargs)
-        return action.clamp_(-self.max_action, self.max_action)
+        return action.clamp_(0,1)
 
     # ------------------------------------------ training ------------------------------------------#
 
@@ -158,7 +156,7 @@ class Diffusion(nn.Module):
         return sample
 
     def p_losses(self, x_start, state, t, weights=1.0):
-        noise = torch.randn_like(x_start)
+        noise = torch.randn_like(x_start, dtype=torch.float32)
 
         x_noisy = self.q_sample(x_start=x_start, t=t, noise=noise)
 
@@ -175,7 +173,7 @@ class Diffusion(nn.Module):
 
     def loss(self, x, state, weights=1.0):
         batch_size = len(x)
-        t = torch.randint(0, self.n_timesteps, (batch_size,), device=x.device).long()
+        t = torch.randint(0, self.n_timesteps, (batch_size,), device=x.device, dtype=torch.int64)
         return self.p_losses(x, state, t, weights)
 
     def forward(self, state, *args, **kwargs):
